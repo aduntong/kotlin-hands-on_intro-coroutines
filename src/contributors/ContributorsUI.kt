@@ -16,8 +16,8 @@ private val COLUMNS = arrayOf("Login", "Contributions")
 
 @Suppress("CONFLICTING_INHERITED_JVM_DECLARATIONS")
 class ContributorsUI : JFrame("GitHub Contributors"), Contributors {
-    private val username = JTextField(20)
-    private val password = JPasswordField(20)
+    private val username = JTextField("aduntong", 20)
+    private val password = JPasswordField("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", 20)
     private val org = JTextField(20)
     private val variant = JComboBox<Variant>(Variant.values())
     private val load = JButton("Load contributors")
