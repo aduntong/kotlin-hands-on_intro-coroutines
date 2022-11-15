@@ -1,13 +1,31 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.20'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.20'
 }
 
 group 'intro-coroutines'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public'
+        allowInsecureProtocol = true
+    }
+    // local m2 maven 直接使用本地maven仓库
+    // USER_HOME/.m2/settings.xml >> M2_HOME/conf/settings.xml >> USER_HOME/.m2/repository
+    mavenLocal()
+    // alibaba maven
+//    maven {
+//        url "http://maven.aliyun.com/nexus/content/groups/public"
+//        allowInsecureProtocol = true
+//    }
+    maven { url "https://jitpack.io" }
+//    mavenCentral()
+    maven { url "https://repo1.maven.org/maven2" }
+//        jcenter()
+    google()
 }
 
 dependencies {
@@ -15,7 +33,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
-    def coroutines_version = '1.5.1'
+    def coroutines_version = '1.6.4'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-swing:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines_version"
