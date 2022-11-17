@@ -2,6 +2,10 @@ package tasks
 
 import contributors.*
 
+/**
+ * linear non concurrent execution, on the main ui thread, the only advantage is that it does not block the thread / UI
+ * run in order
+ */
 suspend fun loadContributorsSuspend(service: GitHubService, req: RequestData): List<User> {
     var repos = service
         .getOrgRepos(req.org)

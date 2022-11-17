@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import java.time.Duration
 import java.util.*
 
 interface GitHubService {
@@ -69,6 +70,10 @@ fun createGitHubService(username: String, password: String): GitHubService {
             val request = builder.build()
             chain.proceed(request)
         }
+        .callTimeout(Duration.ofMinutes(1))
+        .connectTimeout(Duration.ofMinutes(1))
+        .readTimeout(Duration.ofMinutes(1))
+        .writeTimeout(Duration.ofMinutes(1))
         .build()
 
     val contentType = "application/json".toMediaType()
